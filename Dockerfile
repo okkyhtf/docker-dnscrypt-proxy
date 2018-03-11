@@ -13,7 +13,7 @@ RUN set -xe \
  && cd /opt \
  && tar xvvzpf dnscrypt-proxy-linux_${PLATFORM}-${DNSCRYPT_PROXY_VERSION}.tar.gz \
  && rm dnscrypt-proxy-linux_${PLATFORM}-${DNSCRYPT_PROXY_VERSION}.tar.gz \
- && mv linux-arm dnscrypt-proxy \
+ && mv linux-${PLATFORM} dnscrypt-proxy \
  && cd dnscrypt-proxy \
  && cp example-dnscrypt-proxy.toml dnscrypt-proxy.toml \
  && sed -i -E "s/\'127\.0\.0\.1\:53\'\, \'\[\:\:1\]\:53\'/'0.0.0.0:53'/g" dnscrypt-proxy.toml \
