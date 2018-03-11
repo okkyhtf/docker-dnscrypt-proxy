@@ -1,9 +1,9 @@
-FROM docker.io/arm32v6/alpine:3.7
+FROM docker.io/library/alpine:3.7
 LABEL maintainer="Okky Hendriansyah <okky.htf@gmail.com>"
 
 ENV DNSCRYPT_PROXY_VERSION=2.0.6 \
     FALLBACK_RESOLVER=203.142.82.222 \
-    PLATFORM=arm
+    PLATFORM=x86_64
 
 RUN set -xe \
  && apk add --no-cache curl bind-tools tini tzdata \
@@ -13,7 +13,7 @@ RUN set -xe \
  && cd /opt \
  && tar xvvzpf dnscrypt-proxy-linux_${PLATFORM}-${DNSCRYPT_PROXY_VERSION}.tar.gz \
  && rm dnscrypt-proxy-linux_${PLATFORM}-${DNSCRYPT_PROXY_VERSION}.tar.gz \
- && mv linux-arm dnscrypt-proxy \
+ && mv linux-${PLATFORM} dnscrypt-proxy \
  && cd dnscrypt-proxy \
  && cp example-dnscrypt-proxy.toml dnscrypt-proxy.toml \
  && sed -i -E "s/\'127\.0\.0\.1\:53\'\, \'\[\:\:1\]\:53\'/'0.0.0.0:53'/g" dnscrypt-proxy.toml \
