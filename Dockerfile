@@ -1,17 +1,18 @@
-FROM arm32v6/alpine:3.7
+FROM docker.io/arm32v6/alpine:3.7
 LABEL maintainer="Okky Hendriansyah <okky.htf@gmail.com>"
 
 ENV DNSCRYPT_PROXY_VERSION=2.0.6 \
-    FALLBACK_RESOLVER=203.142.82.222
+    FALLBACK_RESOLVER=203.142.82.222 \
+    PLATFORM=arm
 
 RUN set -xe \
  && apk add --no-cache curl bind-tools tini tzdata \
- && curl -LO https://github.com/jedisct1/dnscrypt-proxy/releases/download/${DNSCRYPT_PROXY_VERSION}/dnscrypt-proxy-linux_arm-${DNSCRYPT_PROXY_VERSION}.tar.gz \
+ && curl -LO https://github.com/jedisct1/dnscrypt-proxy/releases/download/${DNSCRYPT_PROXY_VERSION}/dnscrypt-proxy-linux_${PLATFORM}-${DNSCRYPT_PROXY_VERSION}.tar.gz \
  && mkdir -p /opt \
- && mv dnscrypt-proxy-linux_arm-${DNSCRYPT_PROXY_VERSION}.tar.gz /opt \
+ && mv dnscrypt-proxy-linux_${PLATFORM}-${DNSCRYPT_PROXY_VERSION}.tar.gz /opt \
  && cd /opt \
- && tar xvvzpf dnscrypt-proxy-linux_arm-${DNSCRYPT_PROXY_VERSION}.tar.gz \
- && rm dnscrypt-proxy-linux_arm-${DNSCRYPT_PROXY_VERSION}.tar.gz \
+ && tar xvvzpf dnscrypt-proxy-linux_${PLATFORM}-${DNSCRYPT_PROXY_VERSION}.tar.gz \
+ && rm dnscrypt-proxy-linux_${PLATFORM}-${DNSCRYPT_PROXY_VERSION}.tar.gz \
  && mv linux-arm dnscrypt-proxy \
  && cd dnscrypt-proxy \
  && cp example-dnscrypt-proxy.toml dnscrypt-proxy.toml \
