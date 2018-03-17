@@ -21,7 +21,9 @@ RUN set -xe \
  && cp example-blacklist.txt blacklist.txt \
  && sed -i -E "s/\# blacklist\_file \= \'blacklist\.txt\'/blacklist_file = 'blacklist.txt'/g" dnscrypt-proxy.toml \
  && cp example-cloaking-rules.txt cloaking-rules.txt \
- && sed -i -E "s/\# cloaking\_rules/cloaking_rules/g" dnscrypt-proxy.toml
+ && sed -i -E "s/\# cloaking\_rules/cloaking_rules/g" dnscrypt-proxy.toml \
+ && chgrp -R 0 /opt/dnscrypt-proxy \
+ && chown -R g+rwx /opt/dnscrypt-proxy
 
 HEALTHCHECK CMD dig @127.0.0.1 reddit.com || exit 1
 
