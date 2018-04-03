@@ -5,7 +5,8 @@ ENV DNSCRYPT_PROXY_VERSION=2.0.8 \
     FALLBACK_RESOLVER=203.142.82.222 \
     PLATFORM=x86_64
 
-RUN set -xe \
+RUN true \
+ && set -xe \
  && apk add --no-cache curl bind-tools tini tzdata \
  && curl -LO https://github.com/jedisct1/dnscrypt-proxy/releases/download/${DNSCRYPT_PROXY_VERSION}/dnscrypt-proxy-linux_${PLATFORM}-${DNSCRYPT_PROXY_VERSION}.tar.gz \
  && apk del curl \
@@ -22,7 +23,10 @@ RUN set -xe \
  && cp example-blacklist.txt blacklist.txt \
  && sed -i -E "s/\# blacklist\_file \= \'blacklist\.txt\'/blacklist_file = 'blacklist.txt'/g" dnscrypt-proxy.toml \
  && cp example-cloaking-rules.txt cloaking-rules.txt \
- && sed -i -E "s/\# cloaking\_rules/cloaking_rules/g" dnscrypt-proxy.toml
+ && sed -i -E "s/\# cloaking\_rules/cloaking_rules/g" dnscrypt-proxy.toml \
+ && chgrp -R 0 /opt/dnscrypt-proxy \
+ && chmod -R g+rwx /opt/dnscrypt-proxy \
+ && true
 
 HEALTHCHECK CMD dig @127.0.0.1 reddit.com || exit 1
 
