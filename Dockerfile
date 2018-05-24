@@ -1,7 +1,7 @@
 FROM docker.io/arm32v6/alpine:3.7
 LABEL maintainer="Okky Hendriansyah <okky.htf@gmail.com>"
 
-ENV DNSCRYPT_PROXY_VERSION=2.0.8 \
+ENV DNSCRYPT_PROXY_VERSION=2.0.11 \
     FALLBACK_RESOLVER=203.142.82.222 \
     PLATFORM=arm
 
