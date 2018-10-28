@@ -1,6 +1,6 @@
 FROM docker.io/library/alpine:3.8
 LABEL maintainer="Okky Hendriansyah <okky.htf@gmail.com>"
-ENV DNSCRYPT_PROXY_VERSION=2.0.16 \
+ENV DNSCRYPT_PROXY_VERSION=2.0.17 \
     PLATFORM=x86_64
 RUN true \
  && set -xe \
