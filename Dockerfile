@@ -4,7 +4,7 @@ ENV DNSCRYPT_PROXY_VERSION=2.0.16 \
     PLATFORM=x86_64
 RUN true \
  && set -xe \
- && apk add --no-cache curl bind-tools tini tzdata \
+ && apk add --no-cache curl bind-tools tini tzdata ca-certificates \
  && curl -LO https://github.com/jedisct1/dnscrypt-proxy/releases/download/${DNSCRYPT_PROXY_VERSION}/dnscrypt-proxy-linux_${PLATFORM}-${DNSCRYPT_PROXY_VERSION}.tar.gz \
  && apk del curl \
  && mkdir -p /opt \
