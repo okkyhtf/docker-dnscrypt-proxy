@@ -1,7 +1,7 @@
-FROM docker.io/arm32v6/alpine:3.8
+FROM docker.io/library/alpine:3.8
 LABEL maintainer="Okky Hendriansyah <okky.htf@gmail.com>"
 ENV DNSCRYPT_PROXY_VERSION=2.0.16 \
-    PLATFORM=arm
+    PLATFORM=x86_64
 RUN true \
  && set -xe \
  && apk add --no-cache curl bind-tools tini tzdata ca-certificates \
