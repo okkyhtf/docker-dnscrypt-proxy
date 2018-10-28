@@ -1,6 +1,6 @@
 FROM docker.io/arm32v6/alpine:3.8
 LABEL maintainer="Okky Hendriansyah <okky.htf@gmail.com>"
-ENV DNSCRYPT_PROXY_VERSION=2.0.16 \
+ENV DNSCRYPT_PROXY_VERSION=2.0.17 \
     PLATFORM=arm
 RUN true \
  && set -xe \
@@ -22,3 +22,4 @@ HEALTHCHECK CMD dig @127.0.0.1 reddit.com || exit 1
 EXPOSE 53/tcp 53/udp
 ENTRYPOINT ["/sbin/tini", "--"]
 CMD ["/opt/dnscrypt-proxy/dnscrypt-proxy"]
+
