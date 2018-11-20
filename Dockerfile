@@ -1,6 +1,6 @@
 FROM docker.io/arm32v6/alpine:3.8
 LABEL maintainer="Okky Hendriansyah <okky.htf@gmail.com>"
-ENV DNSCRYPT_PROXY_VERSION=2.0.17 \
+ENV DNSCRYPT_PROXY_VERSION=2.0.18 \
     PLATFORM=arm
 RUN true \
  && set -xe \
