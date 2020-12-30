@@ -16,8 +16,8 @@ RUN true \
  && rm dnscrypt-proxy-${OS}_${PLATFORM}-${DNSCRYPT_PROXY_VERSION}.tar.gz \
  && mv ${OS}-${PLATFORM} dnscrypt-proxy \
  && curl -LO https://github.com/upx/upx/releases/download/v${UPX_VERSION}/upx-${UPX_VERSION}-${PLATFORM_ALIAS}_${OS}.tar.xz \
- && tar -xf upx-${UPX_VERSION}-${PLATFORM}_${OS}.tar.xz \
- && mv upx-${UPX_VERSION}-${PLATFORM}_${OS}/upx /usr/bin/upx \
+ && tar -xf upx-${UPX_VERSION}-${PLATFORM_ALIAS}_${OS}.tar.xz \
+ && mv upx-${UPX_VERSION}-${PLATFORM_ALIAS}_${OS}/upx /usr/bin/upx \
  && rm -rf upx* \
  && cd dnscrypt-proxy \
  && upx --lzma dnscrypt-proxy \
