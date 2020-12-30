@@ -4,6 +4,7 @@ ENV DNSCRYPT_PROXY_VERSION=2.0.44
 ENV UPX_VERSION=3.96
 ENV OS=linux
 ENV PLATFORM=x86_64
+ENV PLATFORM_ALIAS=i386
 RUN true \
  && set -xe \
  && apk add --no-cache curl bind-tools tini tzdata ca-certificates xz \
@@ -14,7 +15,7 @@ RUN true \
  && tar xvvzpf dnscrypt-proxy-${OS}_${PLATFORM}-${DNSCRYPT_PROXY_VERSION}.tar.gz \
  && rm dnscrypt-proxy-${OS}_${PLATFORM}-${DNSCRYPT_PROXY_VERSION}.tar.gz \
  && mv ${OS}-${PLATFORM} dnscrypt-proxy \
- && curl -LO https://github.com/upx/upx/releases/download/v${UPX_VERSION}/upx-${UPX_VERSION}-${PLATFORM}_${OS}.tar.xz \
+ && curl -LO https://github.com/upx/upx/releases/download/v${UPX_VERSION}/upx-${UPX_VERSION}-${PLATFORM_ALIAS}_${OS}.tar.xz \
  && tar -xf upx-${UPX_VERSION}-${PLATFORM}_${OS}.tar.xz \
  && mv upx-${UPX_VERSION}-${PLATFORM}_${OS}/upx /usr/bin/upx \
  && rm -rf upx* \
